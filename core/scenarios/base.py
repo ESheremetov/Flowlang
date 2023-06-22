@@ -56,13 +56,11 @@ class ScenarioRun:
         attempt = 0
         while not is_end:
             attempt += 1
-            print(f"Task: {task}")
             response = self.control_step(task)['result']
             task = response
             func_call = self.control_step.history[-1].get('function_call')
             if func_call:
                 func_call = ast.literal_eval(func_call)
-                print(f"Func call: {func_call}")
                 self._history[func_call.get('name', 'unknown')] = {'data': response, 'id': attempt}
                 if func_call.get('name') == 'end_step':
                     is_end = True

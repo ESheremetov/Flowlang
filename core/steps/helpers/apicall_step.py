@@ -26,7 +26,6 @@ class ApiCallStep(Step):
     def history(self) -> list:
         return self.model.history
 
-
     def __call__(self, task: str) -> str:
         response = self.model(content=self.prompt, input_text=task, functions=self.endpoints, functions_spec=self.endpoints_specs)
         return response
