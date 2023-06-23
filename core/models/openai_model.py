@@ -63,7 +63,11 @@ class OpenAIModel(LLModel):
         function_call = response.get('function_call')
         if function_call:
             function_name = function_call['name']
-            function_kwds = json.loads(function_call['arguments'].replace('\n', ''))
+            try:
+                function_kwds = json.loads(function_call['arguments'])
+            except json.JSONDecodeError:
+                function_kwds = dict()
+                print(function_call['arguments'])
             try:
                 function_response = functions[function_name](**function_kwds)
             except TypeError as ex:
