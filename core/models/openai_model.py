@@ -59,7 +59,7 @@ class OpenAIModel(LLModel):
             ).get('choices')[0].get('message', {})
         except KeyError:
             response = {"error": "Key Error [0]. Do not have enough information."}
-        result = {'result': None, 'message': response.get('content', "")}
+        result = {'message': response.get('content', "")}
         function_call = response.get('function_call')
         if function_call:
             function_name = function_call['name']

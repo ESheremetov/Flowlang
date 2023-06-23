@@ -16,6 +16,8 @@ class ControlStep(Step):
     prompt = """
     Your task is to determine which of the steps you need to call at the current moment, based on the available data, previous steps results and the task. \
     If you think that the end result is achieved, then you must call a step called "end_step". \
+    In the "end_step" step, put the result that corresponds to the task. \
+    Do not use the result of the "validation_step" step as an answer. \
     Ask for clarification if a user task is ambiguous.
     """
 
