@@ -1,4 +1,4 @@
-from core.models import LLModel
+from ...models import LLModel
 from ..base import Step
 
 

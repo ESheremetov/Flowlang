@@ -1,6 +1,6 @@
 import abc
 from copy import copy
-from core.models import LLModel
+from ..models import LLModel
 
 
 class Step(abc.ABC):
